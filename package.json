@@ -7,8 +7,10 @@
   "scripts": {
     "clean": "rimraf ./dist/*",
     "build": "tsc",
+    "test": "tsc && nyc --color -a ava -v",
     "version": "git add -A",
-    "postversion": "git push && git push --tags && npm publish"
+    "postversion": "git push && git push --tags && npm publish",
+    "inform-coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -21,8 +23,35 @@
   },
   "homepage": "https://github.com/JimmyBoh/pully-core#readme",
   "devDependencies": {
+    "@types/node": "^10.9.1",
+    "ava": "^0.25.0",
+    "coveralls": "^3.0.2",
+    "nyc": "^12.0.2",
     "rimraf": "^2.6.2",
     "typescript": "^3.0.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "url-pattern": "^1.0.3"
+  },
+  "ava": {
+    "serial": true,
+    "files": [
+      "./dist/**/*.spec.js"
+    ],
+    "source": [
+      "./dist/**/*.js"
+    ]
+  },
+  "nyc": {
+    "timeout": "2m",
+    "include": [
+      "dist/**/*.js"
+    ],
+    "exclude": [
+      "dist/**/*.spec.js",
+      "dist/debug.js",
+      "dist/index.js",
+      "dist/models.js"
+    ]
+  }
 }
