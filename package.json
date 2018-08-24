@@ -2,10 +2,11 @@
   "name": "pully-core",
   "version": "0.3.1",
   "description": "Shared models used by pully, scany, and pully-server.",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "clean": "rimraf ./dist/*",
-    "build": "tsc & rimraf ./dist/*.js",
+    "build": "tsc",
     "version": "git add -A",
     "postversion": "git push && git push --tags && npm publish"
   },

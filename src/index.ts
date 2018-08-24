@@ -1,2 +1,3 @@
 
-export { ScanResult, FeedResult, VideoResult, Thumbnails } from './models';
+export * from './models';
+export * from './utils';
