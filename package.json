@@ -1,9 +1,11 @@
 {
   "name": "pully-core",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Shared models used by pully, scany, and pully-server.",
   "types": "./dist/index.d.ts",
-  "files": ["./dist/*"],
+  "files": [
+    "./dist/*"
+  ],
   "scripts": {
     "clean": "rimraf ./dist/*",
     "build": "tsc && rimraf ./dist/*.js",
