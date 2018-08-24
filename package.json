@@ -1,0 +1,27 @@
+{
+  "name": "pully-core",
+  "version": "0.1.0",
+  "description": "Shared models used by pully, scany, and pully-server.",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "clean": "rimraf ./dist/*",
+    "build": "tsc && rimraf ./dist/*.js",
+    "version": "git add -A",
+    "postversion": "git push && git push --tags && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JimmyBoh/pully-core.git"
+  },
+  "author": "Jim Buck <jim@jimmyboh.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JimmyBoh/pully-core/issues"
+  },
+  "homepage": "https://github.com/JimmyBoh/pully-core#readme",
+  "devDependencies": {
+    "rimraf": "^2.6.2",
+    "typescript": "^3.0.1"
+  },
+  "dependencies": {}
+}
