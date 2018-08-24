@@ -1,10 +1,14 @@
 # pully-core
 
+[![Build Status](https://img.shields.io/travis/JimmyBoh/pully-core/master.svg?style=flat-square)](https://travis-ci.org/JimmyBoh/pully-core)
+[![Code Coverage](https://img.shields.io/coveralls/JimmyBoh/pully-core/master.svg?style=flat-square)](https://coveralls.io/github/JimmyBoh/pully-core?branch=master)
+[![Dependencies](https://img.shields.io/david/JimmyBoh/pully-core.svg?style=flat-square)](https://david-dm.org/JimmyBoh/pully-core)
+[![DevDependencies](https://img.shields.io/david/dev/JimmyBoh/pully-core.svg?style=flat-square)](https://david-dm.org/JimmyBoh/pully-core?type=dev)
 [![npm](https://img.shields.io/npm/v/pully-core.svg?style=flat-square)](https://www.npmjs.com/package/pully-core)
 [![Monthly Downloads](https://img.shields.io/npm/dm/pully-core.svg?style=flat-square)](https://www.npmjs.com/package/pully-core)
 [![Total Downloads](https://img.shields.io/npm/dt/pully-core.svg?style=flat-square)](https://www.npmjs.com/package/pully-core)
 
-Shared models used internally by `pully`, `scany`, and `pully-server`.
+Shared models and functions used internally by `pully`, `scany`, and `pully-server`.
 
 ## Related
 
