@@ -4,7 +4,7 @@
 [![Monthly Downloads](https://img.shields.io/npm/dm/pully-core.svg?style=flat-square)](https://www.npmjs.com/package/pully-core)
 [![Total Downloads](https://img.shields.io/npm/dt/pully-core.svg?style=flat-square)](https://www.npmjs.com/package/pully-core)
 
-_Shared models used by pully, scany, and pully-server._
+Shared models used internally by `pully`, `scany`, and `pully-server`.
 
 ## Related
 
