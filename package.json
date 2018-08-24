@@ -3,6 +3,7 @@
   "version": "0.2.0",
   "description": "Shared models used by pully, scany, and pully-server.",
   "types": "./dist/index.d.ts",
+  "files": ["./dist/*"],
   "scripts": {
     "clean": "rimraf ./dist/*",
     "build": "tsc && rimraf ./dist/*.js",
