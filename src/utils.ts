@@ -1,5 +1,7 @@
 import { parse } from 'url';
 import * as UrlPattern from 'url-pattern';
+const sanitize = require('sanitize-filename');
+const lodashTemplate: (format: string) => ((data: any) => string) = require('lodash.template');
 
 import { Thumbnails } from './models';
 
@@ -91,4 +93,31 @@ function imageUrl(videoId: string, image: string): string {
 export function makeAbsolute(path: string, host: string = 'https://youtube.com'): string {
     if (host.endsWith('/')) host = host.slice(0, -1);
     return path.startsWith('/') ? (host + path) : path;
+}
+
+export function scrubString(text: string): string {
+    return sanitize(text);
+}
+
+export function scrubObject(target: any): any {
+    let result: any = {};
+
+    Object.keys(target).forEach(key => {
+        let val = target[key];
+        result[key] = typeof val === 'string' ? scrubString(val).trim() : val;
+    });
+
+    return result;
+}
+
+export function template(format: string) {
+    function customTemplate(data: any) {
+        data = scrubObject(data);
+        return customTemplate.lodashTemplate(data);
+    }
+
+    customTemplate.format = format;
+    customTemplate.lodashTemplate = lodashTemplate(format);
+
+    return customTemplate;
 }

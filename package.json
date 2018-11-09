@@ -23,14 +23,16 @@
   },
   "homepage": "https://github.com/JimmyBoh/pully-core#readme",
   "devDependencies": {
-    "@types/node": "^10.9.1",
+    "@types/node": "^10.12.3",
     "ava": "^0.25.0",
     "coveralls": "^3.0.2",
-    "nyc": "^12.0.2",
+    "nyc": "^13.1.0",
     "rimraf": "^2.6.2",
-    "typescript": "^3.0.1"
+    "typescript": "^3.1.6"
   },
   "dependencies": {
+    "lodash.template": "^4.4.0",
+    "sanitize-filename": "^1.6.1",
     "url-pattern": "^1.0.3"
   },
   "ava": {

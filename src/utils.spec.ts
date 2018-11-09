@@ -70,6 +70,46 @@ test('makeAbsolute converts root-based relative paths', testMakeAbsolute, '/a/te
 test('makeAbsolute skips non-relative paths', testMakeAbsolute, 'http://jimmyboh.com', 'http://jimmyboh.com');
 test('makeAbsolute allows custom hosts', testMakeAbsolute, '/a/test/path', 'http://youtube.co.uk/a/test/path', 'http://youtube.co.uk/');
 
+
+test(`scrubString removes invalid characters`, t => {
+    const expectedStr = 'this.$$$-is(S)[A]{F}E';
+    const actualStr = utils.scrubString('this.$*$*$-is\\/(S)[A]{F}|E|');
+    t.is(actualStr, expectedStr);
+});
+
+test(`scrubObject removes invalid characters from each property`, t => {
+    interface Thingy {
+        a: string,
+        b: number,
+        c: string
+    }
+
+    const origObject: Thingy = {
+        a: '$(*@#$#@$)(*)',
+        b: 2,
+        c: 'lkjasfd*^%@#$(*jfsl)'
+    };
+    const expectedObj: Thingy = {
+        a: '$(@#$#@$)()',
+        b: 2,
+        c: 'lkjasfd^%@#$(jfsl)'
+    };
+
+    const actualObj: Thingy = utils.scrubObject(origObject);
+
+    t.is(actualObj.a, expectedObj.a);
+    t.is(actualObj.b, expectedObj.b);
+    t.is(actualObj.c, expectedObj.c);
+});
+
+test(`template creates a template function that auto-scrubs the data`, t => {
+    const expectedStr = 'Hello World!';
+    const template = utils.template('${greeting} ${name}');
+    t.is(typeof template, 'function');
+    const actualStr = template({greeting: '                He:l<l>o?', name: 'W"or|l*d!   '});
+    t.is(actualStr, expectedStr);
+});
+
 function testMakeAbsolute(t: TestContext, path: string, expectedUrl: string, host?: string) {
     const actualUrl = utils.makeAbsolute(path, host);
     t.is(actualUrl, expectedUrl);
