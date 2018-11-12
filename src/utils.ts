@@ -1,5 +1,6 @@
 import { parse } from 'url';
 import * as UrlPattern from 'url-pattern';
+import { getVideoID } from 'ytdl-core';
 const sanitize = require('sanitize-filename');
 const lodashTemplate: (format: string) => ((data: any) => string) = require('lodash.template');
 
@@ -20,14 +21,9 @@ export function extractPlaylistId(url: string): string {
 }
 
 export function extractVideoId(url: string): string {
-    const urlData = parse(url, true, true);
-    let videoId = null;
+    let result = getVideoID(url);
 
-    if (urlData.query.v) {
-        videoId = urlData.query.v as string;
-    }
-
-    return videoId;
+    return typeof result === 'string' ? result : null;
 }
 
 export function extractChannelId(url: string): string {

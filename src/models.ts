@@ -166,6 +166,44 @@ export interface VideoResult extends ScanResult {
 }
 
 /**
+ * Represents data returned by a format query.
+ */
+export interface QueryResult extends VideoResult {
+  /**
+   * The available formats for the video.
+   */
+  formats: Array<MediaFormat>;
+
+  /**
+   * The raw response object (contains a lot of cryptic data).
+   */
+  raw: any;
+}
+
+/**
+ * Contains details on a video-only, audio-only, or video/audio stream.
+ */
+export interface MediaFormat {
+  audioBitrate: number;
+  audioEncoding: string;
+  bitrate: string;
+  downloadSize: number;
+  container: string;
+  encoding: string;
+  fps: number;
+  itag: string;
+  resolution: number;
+  size: string;
+  type: string;
+  url: string;
+
+  /**
+   * The raw format data (lots of cryptic data).
+   */
+  raw: any;
+}
+
+/**
  * Collection of various thumbnail URLs.
  *
  * @export
