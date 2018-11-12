@@ -1,5 +1,5 @@
 import { Readable } from 'stream';
-import { getInfo, downloadFromInfo } from 'ytdl-core';
+import { getInfo, downloadFromInfo as ytdlDownloadFromInfo } from 'ytdl-core';
 
 import { createThumbnails } from './utils';
 import { QueryResult, MediaFormat } from './models';
@@ -56,5 +56,5 @@ export async function query(url: string): Promise<QueryResult> {
  * @param rawFormat The raw stream format details.
  */
 export function downloadFromInfo(rawVideo: any, rawFormat: any): Readable {
-  return downloadFromInfo(rawVideo, { format: rawFormat });
+  return ytdlDownloadFromInfo(rawVideo, { format: rawFormat });
 }

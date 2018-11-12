@@ -9,6 +9,7 @@
     "build": "tsc",
     "test": "tsc && nyc --color -a ava -v",
     "version": "git add -A",
+    "preversion": "rimraf ./dist/* && tsc && nyc --color -a ava -v",
     "postversion": "git push && git push --tags && npm publish",
     "inform-coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
