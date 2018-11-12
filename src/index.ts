@@ -52,8 +52,9 @@ export async function query(url: string): Promise<QueryResult> {
 
 /**
  * Opens a stream to download a single 'track' (hd video, audio, or sd video+audio) from YouTube.
- * @param format The format details of which track to download.
+ * @param rawVideo The raw video details.
+ * @param rawFormat The raw stream format details.
  */
-export function downloadStream(format: MediaFormat): Readable {
-  return downloadFromInfo(this._format.data.raw, { format: format.raw });
+export function downloadFromInfo(rawVideo: any, rawFormat: any): Readable {
+  return downloadFromInfo(rawVideo, { format: rawFormat });
 }
