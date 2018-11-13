@@ -19,6 +19,7 @@ async function queryOf(t: TestContext, videoId: string) {
 	t.is(typeof data.description, 'string');
 	t.true(data.published instanceof Date);
 	t.is(typeof data.views, 'number');
+	t.true(data.views > 0);
 	t.truthy(data.thumbnails);
 	t.true(Object.keys(data.thumbnails).length > 0);
 }

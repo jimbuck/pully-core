@@ -27,7 +27,7 @@ export async function query(url: string): Promise<QueryResult> {
     thumbnails: createThumbnails(raw.video_id),
     description: raw.description,
     published: new Date(raw.published),
-    views: parseInt(raw.view_count, 10),
+    views: parseInt((raw.player_response as any).videoDetails.viewCount, 10), // TODO: PR on ytdl to fix the typings
     lastScanned: now,
     formats: (raw.formats as Array<any>).map<MediaFormat>(rawFormat => {
 
