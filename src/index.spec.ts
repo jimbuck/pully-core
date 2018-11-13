@@ -1,5 +1,6 @@
+import { Readable } from 'stream';
 import { test, TestContext } from 'ava';
-import { query } from './index';
+import { query, downloadFromInfo } from './index';
 
 const EMPTY_STRING = '';
 
@@ -36,3 +37,26 @@ test(queryOf, '8YP_nOCO-4Q');
 test(queryOf, 'O-m520BRkfM');
 test(queryOf, 'hDACN-BGvI8');
 test(queryOf, 'dQw4w9WgXcQ');
+
+test(`downloadFromInfo correctly calls into ytdl-core`, t => {
+	const ytdl = require('ytdl-core');
+	let origDownloadFromInfo = ytdl.downloadFromInfo;
+
+	const expectedRawVideo = Math.random();
+	const expectedformat = Math.random();
+	const expectedReturn = new Readable();
+
+	t.plan(3);
+
+	ytdl.downloadFromInfo = (rawVideo: any, options: { format: any }) => {
+		t.is(rawVideo, expectedRawVideo);
+		t.is(options.format, expectedformat);
+
+		return expectedReturn;
+	};
+
+	const actualReturn = downloadFromInfo(expectedRawVideo, expectedformat);
+	t.is(actualReturn, expectedReturn);
+
+	ytdl.downloadFromInfo = origDownloadFromInfo;
+})
