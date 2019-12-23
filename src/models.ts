@@ -184,16 +184,12 @@ export interface QueryResult extends VideoResult {
  * Contains details on a video-only, audio-only, or video/audio stream.
  */
 export interface MediaFormat {
-  audioBitrate: number;
-  audioEncoding: string;
-  bitrate: string;
+  bitrate: number;
   downloadSize: number;
   container: string;
-  encoding: string;
   fps: number;
-  itag: string;
+  itag: number;
   resolution: number;
-  size: string;
   type: string;
   url: string;
 

@@ -27,23 +27,19 @@ export async function query(url: string): Promise<QueryResult> {
     thumbnails: createThumbnails(raw.video_id),
     description: raw.description,
     published: new Date(raw.published),
-    views: parseInt((raw.player_response as any).videoDetails.viewCount, 10), // TODO: PR on ytdl to fix the typings
+    views: parseInt(raw.player_response.videoDetails.viewCount.toString(), 10), // TODO: PR on ytdl to fix the typings
     lastScanned: now,
-    formats: (raw.formats as Array<any>).map<MediaFormat>(rawFormat => {
+    formats: raw.formats.map<MediaFormat>(rawFormat => {
 
       return {
         raw: rawFormat,
-        audioBitrate: rawFormat.audioBitrate,
-        audioEncoding: rawFormat.audioEncoding,
-        bitrate: rawFormat.bitrate,
-        downloadSize: rawFormat.clen ? parseInt(rawFormat.clen, 10) : null,
+        bitrate: parseInt(rawFormat.bitrate.toString(), 10),
+        downloadSize: rawFormat.contentLength ? parseInt(rawFormat.contentLength, 10) : null,
         container: rawFormat.container,
-        encoding: rawFormat.encoding,
-        fps: parseInt(rawFormat.fps || '0', 10),
+        fps: rawFormat.fps || 0,
         itag: rawFormat.itag,
-        size: rawFormat.size,
-        resolution: parseInt(rawFormat.resolution || '0', 10) || (rawFormat.size && parseInt(rawFormat.size.split('x')[1], 10)) || 0,
-        type: rawFormat.type,
+        resolution: rawFormat.height || 0,
+        type: rawFormat.mimeType.split(';')[0],
         url: rawFormat.url
       };
     })
