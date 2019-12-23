@@ -67,7 +67,7 @@ test(`createThumbnails properly creates all available image URLs`, t => {
 });
 
 test('makeAbsolute converts root-based relative paths', testMakeAbsolute, '/a/test/path', 'https://youtube.com/a/test/path');
-test('makeAbsolute skips non-relative paths', testMakeAbsolute, 'http://jimmyboh.com', 'http://jimmyboh.com');
+test('makeAbsolute skips non-relative paths', testMakeAbsolute, 'http://jimbuck.io', 'http://jimbuck.io');
 test('makeAbsolute allows custom hosts', testMakeAbsolute, '/a/test/path', 'http://youtube.co.uk/a/test/path', 'http://youtube.co.uk/');
 
 

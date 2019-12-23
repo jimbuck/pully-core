@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JimmyBoh/pully-core.git"
+    "url": "git+https://github.com/jimbuck/pully-core.git"
   },
-  "author": "Jim Buck <jim@jimmyboh.com>",
+  "author": "Jim Buck <jim@jimbuck.io>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/JimmyBoh/pully-core/issues"
+    "url": "https://github.com/jimbuck/pully-core/issues"
   },
-  "homepage": "https://github.com/JimmyBoh/pully-core#readme",
+  "homepage": "https://github.com/jimbuck/pully-core#readme",
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "^1.0.0",
     "@types/node": "^12.12.22",
