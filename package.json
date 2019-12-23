@@ -43,6 +43,7 @@
   "ava": {
     "serial": true,
     "compileEnhancements": false,
+    "timeout": "2m",
     "extensions": [
       "ts"
     ],
@@ -52,7 +53,6 @@
   },
   "nyc": {
     "extends": "@istanbuljs/nyc-config-typescript",
-    "timeout": "2m",
     "include": [
       "src/**"
     ],
