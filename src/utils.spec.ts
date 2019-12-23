@@ -1,4 +1,4 @@
-import { test, TestContext } from 'ava';
+import test, { ExecutionContext } from 'ava';
 
 import * as utils from './utils';
 
@@ -110,7 +110,7 @@ test(`template creates a template function that auto-scrubs the data`, t => {
     t.is(actualStr, expectedStr);
 });
 
-function testMakeAbsolute(t: TestContext, path: string, expectedUrl: string, host?: string) {
+function testMakeAbsolute(t: ExecutionContext, path: string, expectedUrl: string, host?: string) {
     const actualUrl = utils.makeAbsolute(path, host);
     t.is(actualUrl, expectedUrl);
 }

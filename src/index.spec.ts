@@ -1,10 +1,10 @@
 import { Readable } from 'stream';
-import { test, TestContext } from 'ava';
+import test, { ExecutionContext } from 'ava';
 import { query, downloadFromInfo } from './index';
 
 const EMPTY_STRING = '';
 
-async function queryOf(t: TestContext, videoId: string) {
+async function queryOf(t: ExecutionContext, videoId: string) {
 	const data = await query(`https://www.youtube.com/watch?v=${videoId}`);
 
 	t.truthy(data);
@@ -26,11 +26,11 @@ async function queryOf(t: TestContext, videoId: string) {
 queryOf.title = (_: string, input: string) => `query returns video data for ${input}`;
 
 test(`query rejects for an unknown video`, async (t) => {
-	await t.throws(query(null));
-	await t.throws(query(EMPTY_STRING));
-	await t.throws(query('https://www.google.com'));
-	await t.throws(query('https://www.not-youtube.org/fake?v=cPrjA5mK8Ek'));
-	await t.throws(query('https://www.youtube.com/watch?v=fakevideoid'));
+	await t.throwsAsync(query(null));
+	await t.throwsAsync(query(EMPTY_STRING));
+	await t.throwsAsync(query('https://www.google.com'));
+	await t.throwsAsync(query('https://www.not-youtube.org/fake?v=cPrjA5mK8Ek'));
+	await t.throwsAsync(query('https://www.youtube.com/watch?v=fakevideoid'));
 });
 
 test(queryOf, 'cPrjA5mK8Ek');
