@@ -1,6 +1,6 @@
 {
   "name": "pully-core",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "Shared models used by pully, scany, and pully-server.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
