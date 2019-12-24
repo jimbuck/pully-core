@@ -33,7 +33,7 @@ export async function query(url: string): Promise<QueryResult> {
 
       return {
         raw: rawFormat,
-        bitrate: parseInt(rawFormat.bitrate.toString(), 10),
+        bitrate: parseInt((rawFormat.bitrate || '0').toString(), 10),
         downloadSize: rawFormat.contentLength ? parseInt(rawFormat.contentLength, 10) : null,
         container: rawFormat.container,
         fps: rawFormat.fps || 0,
